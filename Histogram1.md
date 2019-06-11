@@ -1,3 +1,8 @@
+---
+
+
+---
+
 <h1 id="histogram-analysis">Histogram Analysis</h1>
 <h2 id="step-0--list-contains-some-numbers">Step 0 : <em>List contains some numbers</em></h2>
 <ul>
@@ -260,11 +265,20 @@ histo <span class="token operator">=</span> defaultdict<span class="token punctu
 <span class="token keyword">for</span> key <span class="token keyword">in</span> numbers<span class="token punctuation">:</span>
    histo<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
 
-histo_order <span class="token operator">=</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span>histo<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">#dictionary items retured as key value tupples </span>
+histo_tupples <span class="token operator">=</span> histo<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">#constructing reverse tupple list</span>
+r_histo_tupples <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> key<span class="token punctuation">,</span>value <span class="token keyword">in</span> histo_tupples<span class="token punctuation">:</span>
+   r_histo_tupples<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">#sorting based on vales</span>
+histo_order <span class="token operator">=</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span>r_histo_tupples<span class="token punctuation">,</span>reverse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Ordered Histogram of the list"</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"---------------------"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"-----------------------------"</span><span class="token punctuation">)</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span>key<span class="token punctuation">,</span>value<span class="token punctuation">)</span> <span class="token keyword">in</span> histo_order<span class="token punctuation">:</span>
-   <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"{key:2}"</span><span class="token punctuation">,</span> <span class="token string">"@"</span><span class="token operator">*</span>value<span class="token punctuation">)</span>
+   <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"{value:2}"</span><span class="token punctuation">,</span> <span class="token string">"@"</span><span class="token operator">*</span>key<span class="token punctuation">)</span>
 </code></pre>
 <p><strong>Output</strong></p>
 <pre class=" language-shell"><code class="prism  language-shell">List contain : [-10, 12, 8, -3, 6, 8, -3, 13, -10, -10, 15, -4, -7, 11, -8, 3, 1, 4, 7, 2, 2, -7, 2, -6, 12, 4, 1, 4, 14, 2, 14, 7, 4, -9, 5, 8, 15, 15, 5, -9, -3, -10, 3, 9, -10, 7, 2, -10, -5, 4, -10, 14, 2, -5, 8, 10, 4, 15, 10, 5, 10, 3, 0, -6, 13, -9, 10, 10, -8, -1, 4, -7, 6, -1, 4, -8, 0, 15, 13, 15, -5, 2, -5, 6, -1, -5, -3, 8, -6, -2, 2, -9, 15, 4, 3, 0, -8, 15, -5, -8, 12, -1, -2, -4, 7, -5, -9, -2, -9, 15, 4, -7, -9, -7, -9, 6, 1, 8, 6, 5, 11, 13, -9, 8, 15, 1, -7, 3, -8, -7, 7, -1, -6, 6, 4, -4, 2, 15, -3, -10, 10, 8, 5, 2, 9, -4, 0, -8, -2, 3, -8, -7, 5, 10, -5, -4, 8, -9, 5, 6, 6, 12, 4, 11, 5, 6, -6, 12, 6, -3, 9, 1, 12, -7, -4, 5, -8, 6, -5, -7, -9, 11, 4, -8, 13, -1, 12, -7, 0, 15, -10, 10]
