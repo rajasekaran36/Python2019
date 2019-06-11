@@ -1,8 +1,3 @@
----
-
-
----
-
 <h1 id="histogram-analysis">Histogram Analysis</h1>
 <h2 id="step-0--list-contains-some-numbers">Step 0 : <em>List contains some numbers</em></h2>
 <ul>
